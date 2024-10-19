@@ -1,0 +1,17 @@
+[
+    "   Product one   ",
+    {
+        "label": "   Product two   "
+    },
+    {
+        "label": "  Product three   ",
+        "productId": "product-three"
+    },
+    {
+        "label": "  Product four   ",
+        "productId": "productfour",
+        "path": "sample/path/to-parent-folder",
+        "description": "This is a description of this product"
+    }
+
+]

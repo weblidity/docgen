@@ -1,0 +1,19 @@
+# Welcome to company documentation
+
+This is the documentation index for your company.
+
+## Product index
+
+Explore documentation and articles for each product.
+
+{{#if products}}
+{{#each products as |product|}}
+{{#with product}}
+- [**{{{label}}}**](./{{{productId}}}){{#if description}} - {{description}}{{/if}}
+{{/with}}
+{{/each}}
+{{else}}
+No products defined yet.
+{{/if}}
+
+

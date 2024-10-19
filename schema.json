@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "uniqueItems": true,
+    "items": {
+        "oneOf": [
+            {
+                "type": "string"
+            },
+            {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "string",
+                        "pattern": "^\\s*([a-zA-Z0-9]+\\s)*[a-zA-Z0-9]+\\s*$"
+                    },
+                    "productId": {
+                        "type": "string",
+                        "pattern": "^[a-z]+([-]?[a-z0-9]+)*$"
+                    },
+                    "path": {
+                        "type": "string",
+                        "pattern": "^([a-z]+([-]?[a-z0-9]+)*\\/)*[a-z]+([-]?[a-z0-9]+)*$"
+                    },
+                    "description": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "label"
+                ],
+                "additionalProperties": true
+            }
+        ]
+    }
+}
