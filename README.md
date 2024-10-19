@@ -10,9 +10,11 @@ CLI tool generating documentation files and folders for multiple projects on a D
 ## Options
 
 - `-h, --help` - provide application help.
-- `-V, --version` -- provide cu
+- `-V, --version` -- provide current application version.
 
 ## `build` command
+
+This is the default command, i.e. this is the command executed when no command appears on the command line.
 
 1. **Retrieves product list** files using patterns in the arguments or default patterns.
 2. **Collect product definitions** from each product list file.
@@ -234,3 +236,22 @@ The equivalent of object definition:
     }
 ]
 ```
+
+## `check` command
+
+Validates product list files against the product list validation schema.
+
+### Usage
+
+```bash
+docgen check [patterns...] [options]
+```
+
+**Arguments**
+
+- `[patterns...]` - optional list of product list filename patterns
+
+**Options**
+
+* `-v, --verbose` - verbose output
+* `--schema <filename>` - path to validation schema file (default: `schema.json`)
