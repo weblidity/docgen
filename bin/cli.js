@@ -1,6 +1,9 @@
 const { Command } = require("commander");
 const fs = require("fs");
 const Validator = require('jsonschema').Validator;
+const hbsr = require("hbsr");
+const { saveDocument } = require("file-easy")
+
 
 
 const program = new Command();
@@ -31,6 +34,8 @@ program
     .argument('[patterns...]', 'products list file')
     .option('-v, --verbose', 'verbose output')
     .option('-t, --templates <path>', 'templates folder', path.join(__dirname, "..", "templates"))
+    .option('-o, --outline <filename>', 'outline file', 'website/products.outline.yaml')
+    .option('-d, --docs <path>', 'documentation folder', 'website/docs')
     .option('--schema <filename>', 'schema file', 'schema.json')
     .action((patterns, options) => {
 
@@ -62,6 +67,56 @@ program
 
         console.log('productsList', JSON.stringify(productsList, null, 2));
 
+        // Create documentation index
+        let documentationIndex = path.join(options.docs, 'index.md');
+        let documentationIndexContent = hbsr.render_template('documentation-index', {products: productsList});
+        saveDocument(documentationIndex, documentationIndexContent)
+        if (options.verbose) {
+            console.log(`Created ${documentationIndex}`);
+        }
+
+        // Create product index page
+        productsList.forEach((product) => {
+
+            /**
+             * Create index.md in each folder of the path
+             */
+            if (product.path) {
+                let pathParts = product.path.split("/");
+                for (let i = 0; i < pathParts.length; i++) {
+                    pathParts[i] = pathParts[i].trim();
+                }
+                for (let i = 0; i < pathParts.length; i++) {
+                    let partialPath = pathParts.slice(0, i+1).join("/");
+
+                    let partialPathIndex = path.join(options.docs, `${partialPath}`, 'index.md');
+                    let partialPathIndexContent = 
+                    hbsr.render_template('partial-path-index', {product: product});
+                    saveDocument(partialPathIndex, partialPathIndexContent)
+                    if (options.verbose) {
+                        console.log(`Created ${partialPathIndex}`);
+                    }
+                }
+            }
+
+            /**
+             * Create index.md in product folder
+             */
+            let productIndex = (product.path) ? path.join(options.docs, `${product.path}`, `${product.productId}`, 'index.md') : path.join(options.docs, `${product.productId}`, 'index.md');
+            let productIndexContent = hbsr.render_template('product-index', {product: product});
+            saveDocument(productIndex, productIndexContent)
+            if (options.verbose) {
+                console.log(`Created ${productIndex}`);
+            }
+        })
+
+        // Create .outline.yaml file
+        let outline = path.join(options.outline);
+        let outlineContent = hbsr.render_template('outline-file', {products: productsList});
+        saveDocument(outline, outlineContent)
+        if (options.verbose) {
+            console.log(`Created ${outline}`);
+        }
 
     })
 
