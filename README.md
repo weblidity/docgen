@@ -1,4 +1,5 @@
 # docgen
+
 CLI tool generating documentation files and folders for multiple projects on a Docusaurus-powered site.
 
 ## Commands
@@ -22,34 +23,34 @@ This is the default command, i.e. this is the command executed when no command a
 4. **In the `docs` folder, generate `index.md`** containing a list of products and links to product index page.
 5. **Generate an `.outline.yaml`** that you will use with `Skelo CLI` to complete the documentation start-up.
 
-**Usage**
+### Usage
 
 ```bash
 docgen [build] [patterns...] [options]
 ```
 
-**Arguments**
+### Arguments
 
-* `[patterns...]` - optional list of product list filename patterns
+- `[patterns...]` - optional list of product list filename patterns
 
-**Options**
+### Options
 
-* `-d, --docs <path>` - path to Docusaurus docs folder. (default: `website/docs`)
-* `-o, --outline <filename>` - name of the outline file intended for Skelo CLI (default: `website/products.outline.yaml`)
-* `-v, --verbose` - verbose output
-* `--schema <filename>` - name of `.json` file with product list definition schema (default: `schema.json`) 
+- `-d, --docs <path>` - path to Docusaurus docs folder. (default: `website/docs`)
+- `-o, --outline <filename>` - name of the outline file intended for Skelo CLI (default: `website/products.outline.yaml`)
+- `-v, --verbose` - verbose output
+- `--schema <filename>` - name of `.json` file with product list definition schema (default: `schema.json`)
 
 If no patterns appear, the default pattern is used: `**/*.[Pp]roducts.json`. If no files match this pattern, then the alternative pattern is used: `__products__/**/*.json`
 
 ### Examples
 
 ```bash
-docgen 
+docgen
 ```
 
-* look for product files in current folder and matching the `**/*.[Pp]roducts.json` pattern. If no files match this pattern, look for files matching the `__products__/**/*.json` (i.e. look for all files ending with `.json` starting with the `__products__` subfolder).
-* `-d` value: `website/docs`
-* `-o` value: `website/products.outline.yaml`
+- look for product files in current folder and matching the `**/*.[Pp]roducts.json` pattern. If no files match this pattern, look for files matching the `__products__/**/*.json` (i.e. look for all files ending with `.json` starting with the `__products__` subfolder).
+- `-d` value: `website/docs`
+- `-o` value: `website/products.outline.yaml`
 
 `website/products.outline.yaml` file:
 
@@ -67,9 +68,9 @@ sidebars:
 docgen myproducts.products.json -v
 ```
 
-* look for `myproducts.products.json` product list file in current folder.
-* `-d` value: `website/docs`
-* `-o` value: `website/products.outline.yaml`
+- look for `myproducts.products.json` product list file in current folder.
+- `-d` value: `website/docs`
+- `-o` value: `website/products.outline.yaml`
 
 ### Product list schema
 
@@ -86,11 +87,11 @@ A product definition item is either a string or an object. The following product
 ]
 ```
 
-* A string product item may have heading or trailing spaces, and contain letters, digits, and spaces. Only a space is allowed between sequences of letters or digits.
-* The object must have the `label` property, whose value is a string. The string for `label` must adhere to the same rules as the string item.
-* Additional object properties include:
-  * `productId` - product slug string
-  * `path` - path of folders preceding product documentation folder
+- A string product item may have heading or trailing spaces, and contain letters, digits, and spaces. Only a space is allowed between sequences of letters or digits.
+- The object must have the `label` property, whose value is a string. The string for `label` must adhere to the same rules as the string item.
+- Additional object properties include:
+  - `productId` - product slug string
+  - `path` - path of folders preceding product documentation folder
 
 The product list file schema is found in `schema.json` in the application root folder.
 
@@ -133,14 +134,11 @@ The product list file schema is found in `schema.json` in the application root f
 }
 ```
 
-
 Property | Description | Default | Example |
 :--|:--|:--|:--|
 `label` | Human readable product label identifying the product |  | `"Product One"` |
 `productId` | product slug string | slug of `label` value | `product-one` |
 `path` | | "" | `"path/to/parent/to/product/folder"` |
-
-
 
 ### Product list file examples
 
@@ -167,6 +165,7 @@ The equivalent of object definition:
     }
 ]
 ```
+
 2. Defines three product, two in string format and the third in object format:
 
 ```json
@@ -247,11 +246,11 @@ Validates product list files against the product list validation schema.
 docgen check [patterns...] [options]
 ```
 
-**Arguments**
+### Arguments
 
 - `[patterns...]` - optional list of product list filename patterns
 
-**Options**
+### Options
 
-* `-v, --verbose` - verbose output
-* `--schema <filename>` - path to validation schema file (default: `schema.json`)
+- `-v, --verbose` - verbose output
+- `--schema <filename>` - path to validation schema file (default: `schema.json`)

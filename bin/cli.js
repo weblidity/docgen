@@ -1,17 +1,15 @@
+#!/usr/bin/env node
+
 const { Command } = require("commander");
-const fs = require("fs");
-const Validator = require('jsonschema').Validator;
-const hbsr = require("hbsr");
 const { saveDocument } = require("file-easy")
-
-
+const fs = require("fs");
+const hbsr = require("hbsr");
+const Validator = require('jsonschema').Validator;
 
 const program = new Command();
-
 let { name, version, description } = require("../package.json");
 const { globSync } = require("glob");
 const path = require("path");
-
 
 const config = {
     "patterns": [
@@ -26,9 +24,7 @@ program
     .description(description);
 
 program
-    .command('build', {
-        isDefault: true
-    })
+    .command('build', { isDefault: true})
     .alias('b')
     .description('build products list')
     .argument('[patterns...]', 'products list file')
@@ -36,7 +32,7 @@ program
     .option('-t, --templates <path>', 'templates folder', path.join(__dirname, "..", "templates"))
     .option('-o, --outline <filename>', 'outline file', 'website/products.outline.yaml')
     .option('-d, --docs <path>', 'documentation folder', 'website/docs')
-    .option('--schema <filename>', 'schema file', 'schema.json')
+    .option('--schema <filename>', 'schema file', path.join(__dirname, "..",   'schema.json'))
     .action((patterns, options) => {
 
         let filenames = getFiles(patterns, options);
@@ -51,8 +47,6 @@ program
             })
         })
 
-        console.log('productsList', JSON.stringify(productsList, null, 2));
-
         // Create productId if not specified and build an object
         //  when product definition is string
 
@@ -60,12 +54,11 @@ program
             product = (typeof product === "string") ? {"label": product} : product;
             product.label = product.label.trim();
             if (!product.productId) {
-                product.productId = product.label.trim().replace(/ /g, "-").toLowerCase();
+                // product.productId = product.label.trim().replace(/ /g, "-").toLowerCase();
+                product.productId = slugify(product.label);
             }
             return product;
         })
-
-        console.log('productsList', JSON.stringify(productsList, null, 2));
 
         // Create documentation index
         let documentationIndex = path.join(options.docs, 'index.md');
@@ -84,13 +77,10 @@ program
             if (product.path) {
                 let pathParts = product.path.split("/");
                 for (let i = 0; i < pathParts.length; i++) {
-                    pathParts[i] = pathParts[i].trim();
-                }
-                for (let i = 0; i < pathParts.length; i++) {
                     let partialPath = pathParts.slice(0, i+1).join("/");
 
                     let partialPathIndex = path.join(options.docs, `${partialPath}`, 'index.md');
-                    let partialPathIndexContent = 
+                    let partialPathIndexContent =
                     hbsr.render_template('partial-path-index', {product: product});
                     saveDocument(partialPathIndex, partialPathIndexContent)
                     if (options.verbose) {
@@ -164,15 +154,56 @@ program
 program.parse("node ./bin/cli.js -v".split(" "));
 // program.parse();
 
+/**
+ * Given an array of patterns, returns an array of filenames matching the patterns.
+ * If no patterns are given, the function uses the default patterns defined in the
+ * module.
+ *
+ * @param {Array<string>} patterns - Array of glob patterns to search for.
+ * @param {Object} options - Options to globSync.
+ * @throws {Error} If the patterns array is not an array.
+ * @returns {Array<string>} Array of filenames.
+ */
 function getFiles(patterns, options) {
-    let filenames = [];
-    if (patterns.length > 0) {
-        filenames = globSync(patterns);
-    } else {
-        filenames = globSync(config.patterns[0]);
-        if (filenames.length === 0) {
-            filenames = globSync(config.patterns[1]);
+    try {
+        if (!patterns || !Array.isArray(patterns)) {
+            throw new Error("Patterns must be an array");
         }
+
+        const filenames = patterns.length > 0
+            ? globSync(patterns)
+            : globSync(config.patterns[0], { cwd: process.cwd() }).concat(
+                globSync(config.patterns[1], { cwd: process.cwd() })
+            );
+
+        return filenames;
+    } catch (error) {
+        console.error("Error getting files:", error.message);
+        return [];
     }
-    return filenames;
+}
+
+/**
+ * Slugify a string.
+ *
+ * @param {string|null|undefined} input The string to slugify.
+ * @throws {Error} If the input is not a string.
+ * @throws {Error} If the input is null or undefined.
+ * @returns {string} The slugified string.
+ */
+function slugify(input) {
+    if (input === null || input === undefined) {
+        throw new Error("Input to slugify cannot be null or undefined");
+    }
+    if (typeof input !== "string") {
+        throw new Error("Input to slugify must be a string");
+    }
+
+    return input
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/[^\w-]+/g, '')
+        .replace(/--+/g, '-')
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
 }
