@@ -151,8 +151,10 @@ program
         }
     })
 
-program.parse("node ./bin/cli.js -v".split(" "));
-// program.parse();
+// TODO: Remove the program.parse with a split string as argument when done
+// program.parse("node ./bin/cli.js -v".split(" "));
+
+program.parse();
 
 /**
  * Given an array of patterns, returns an array of filenames matching the patterns.
