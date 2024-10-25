@@ -26,8 +26,8 @@ program
 program
     .command('build', { isDefault: true })
     .alias('b')
-    .description('build products list')
-    .argument('[patterns...]', 'products list file')
+    .description('build documentation folders and files for multiple company products')
+    .argument('[patterns...]', 'pattern for products list file')
     .option('-v, --verbose', 'verbose output')
     .option('-t, --templates <path>', 'templates folder', path.join(__dirname, "..", "templates"))
     .option('-o, --outline <filename>', 'outline file', 'website/products.outline.yaml')
@@ -132,8 +132,8 @@ program
 
 program
     .command('check')
-    .description('check product list')
-    .argument('[patterns...]', 'products list file')
+    .description('check valid structure of product list files')
+    .argument('[patterns...]', 'pattern for products list file')
     .option('-v, --verbose', 'verbose output')
     .option('--schema <filename>', 'schema file', 'schema.json')
 
