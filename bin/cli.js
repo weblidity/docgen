@@ -24,7 +24,7 @@ program
     .description(description);
 
 program
-    .command('build', { isDefault: true})
+    .command('build', { isDefault: true })
     .alias('b')
     .description('build products list')
     .argument('[patterns...]', 'products list file')
@@ -32,7 +32,7 @@ program
     .option('-t, --templates <path>', 'templates folder', path.join(__dirname, "..", "templates"))
     .option('-o, --outline <filename>', 'outline file', 'website/products.outline.yaml')
     .option('-d, --docs <path>', 'documentation folder', 'website/docs')
-    .option('--schema <filename>', 'schema file', path.join(__dirname, "..",   'schema.json'))
+    .option('--schema <filename>', 'schema file', path.join(__dirname, "..", 'schema.json'))
     .action((patterns, options) => {
 
         let filenames = getFiles(patterns, options);
@@ -51,7 +51,7 @@ program
         //  when product definition is string
 
         productsList = productsList.map((product) => {
-            product = (typeof product === "string") ? {"label": product} : product;
+            product = (typeof product === "string") ? { "label": product } : product;
             product.label = product.label.trim();
             if (!product.productId) {
                 // product.productId = product.label.trim().replace(/ /g, "-").toLowerCase();
@@ -62,7 +62,7 @@ program
 
         // Create documentation index
         let documentationIndex = path.join(options.docs, 'index.md');
-        let documentationIndexContent = hbsr.render_template('documentation-index', {products: productsList});
+        let documentationIndexContent = hbsr.render_template('documentation-index', { products: productsList });
         saveDocument(documentationIndex, documentationIndexContent)
         if (options.verbose) {
             console.log(`Created ${documentationIndex}`);
@@ -77,11 +77,11 @@ program
             if (product.path) {
                 let pathParts = product.path.split("/");
                 for (let i = 0; i < pathParts.length; i++) {
-                    let partialPath = pathParts.slice(0, i+1).join("/");
+                    let partialPath = pathParts.slice(0, i + 1).join("/");
 
                     let partialPathIndex = path.join(options.docs, `${partialPath}`, 'index.md');
                     let partialPathIndexContent =
-                    hbsr.render_template('partial-path-index', {product: product});
+                        hbsr.render_template('partial-path-index', { product: product });
                     saveDocument(partialPathIndex, partialPathIndexContent)
                     if (options.verbose) {
                         console.log(`Created ${partialPathIndex}`);
@@ -93,7 +93,7 @@ program
              * Create index.md in product folder
              */
             let productIndex = (product.path) ? path.join(options.docs, `${product.path}`, `${product.productId}`, 'index.md') : path.join(options.docs, `${product.productId}`, 'index.md');
-            let productIndexContent = hbsr.render_template('product-index', {product: product});
+            let productIndexContent = hbsr.render_template('product-index', { product: product });
             saveDocument(productIndex, productIndexContent)
             if (options.verbose) {
                 console.log(`Created ${productIndex}`);
@@ -112,16 +112,17 @@ program
         } else if (outline.endsWith(".outline")) {
             // Only .outline, add .yaml
             outline += ".yaml";
-        } 
+        }
 
-        var currentdate = new Date(); 
-var datetime = currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes() + ":" 
-                + currentdate.getSeconds();
-        let outlineContent = hbsr.render_template('outline-file', {products: productsList, datetime: datetime, appname: name});
+        var currentdate = new Date();
+        var datetime = currentdate.getDate() + "/"
+            + (currentdate.getMonth() + 1) + "/"
+            + currentdate.getFullYear() + " @ "
+            + currentdate.getHours() + ":"
+            + currentdate.getMinutes() + ":"
+            + currentdate.getSeconds();
+
+        let outlineContent = hbsr.render_template('outline-file', { products: productsList, datetime: datetime, appname: name });
         saveDocument(outline, outlineContent)
         if (options.verbose) {
             console.log(`Created ${outline}`);
@@ -145,7 +146,7 @@ program
         }
 
         try {
-            let productsListSchema = JSON.parse(fs.readFileSync(options.schema  || path.join(__dirname, "..", "schema.json"), 'utf8'));
+            let productsListSchema = JSON.parse(fs.readFileSync(options.schema || path.join(__dirname, "..", "schema.json"), 'utf8'));
 
             if (options.verbose) {
                 console.log(filenames);
