@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-const { Command } = require("commander");
-const { saveDocument } = require("file-easy")
-const fs = require("fs");
-const hbsr = require("hbsr");
-const Validator = require('jsonschema').Validator;
+const { Command }       = require("commander");
+const { saveDocument }  = require("file-easy")
+const fs                = require("fs");
+const hbsr              = require("hbsr");
+const Validator         = require('jsonschema').Validator;
 
-const program = new Command();
-let { name, version, description } = require("../package.json");
-const { globSync } = require("glob");
-const path = require("path");
+const program                       = new Command();
+let { name, version, description }  = require("../package.json");
+const { globSync }                  = require("glob");
+const path                          = require("path");
 
 const config = {
     "patterns": [
