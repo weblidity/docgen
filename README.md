@@ -1,4 +1,17 @@
-# docs-docgen-cli
+<p align="center">
+  <a href="">
+ <img width=200px height=200px src="https://i.imgur.com/0Axr7in.jpg" alt="Docs DocGen CLI Project Logo"></a>
+</p>
+
+
+<h1 align="center">docs-docgen-cli</h1>
+
+<div align="center">
+
+[![Status](https://img.shields.io/badge/status-active-success.svg)]() ![NPM Version](https://img.shields.io/npm/v/docs-docgen-cli)
+ [![GitHub Issues](https://img.shields.io/github/issues/weblidity/docgen.svg)](https://github.com/weblidity/docgen/issues) [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/weblidity/docgen.svg)](https://github.com/weblidity/docgen/pulls) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+
+</div>
 
 CLI tool generating documentation files and folders for multiple projects on a Docusaurus-powered site.
 
