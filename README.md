@@ -10,7 +10,7 @@ Install the package locally using the global switch.
 npm install docs-docgen-cli -g
 ```
 
-After installing it locally, you can use from any folder in your computer. Check `docs-docgen-cli` is available:
+After installing it locally, you can use from any folder on your computer. Check `docs-docgen-cli` is available:
 
 ```bash
 docs-docgen-cli -V
