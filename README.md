@@ -2,6 +2,28 @@
 
 CLI tool generating documentation files and folders for multiple projects on a Docusaurus-powered site.
 
+## Installation
+
+Install the package locally using the global switch.
+
+```bash
+npm install docs-docgen-cli -g
+```
+
+After installing it locally, you can use from any folder in your computer. Check `docs-docgen-cli` is available:
+
+```bash
+docs-docgen-cli -V
+# output
+# 1.0.3
+```
+
+Alternativelly, run `docs-docgen-cli` without installing it locally (recommended).
+
+```bash
+npx docs-docgen-cli -V
+```
+
 ## Commands
 
 - `build` - build files and folders for company product documentation structure for a Docusaurus-powered site.
@@ -255,8 +277,3 @@ docs-docgen-cli check [patterns...] [options]
 - `-v, --verbose` - verbose output
 - `--schema <filename>` - path to validation schema file (default: `schema.json`)
 
-## Contributions
-
-The typescript is pretty complex and there are many different ways how to define components and their props so it's realy hard to support all these use cases. That means only one thing, contributions are highly welcome. Just keep in mind that each PR should also include tests for the part it's fixing.
-
-Thanks to all contributors without their help there wouldn't be a single bug fixed or feature implemented. Check the contributors tab to find out more. All those people supported this project. THANK YOU!
