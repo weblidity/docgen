@@ -1,7 +1,0 @@
-# Product six
-
-Product index or landing page content goes here. For now, this is just a placeholder with a recommended link to product documentation top page.
-
-## Quick links
-
-- [**Product six documentation**](./product-six-documentation)
