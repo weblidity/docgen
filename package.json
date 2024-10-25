@@ -1,10 +1,26 @@
 {
-  "name": "docgen",
+  "name": "docs-docgen-cli",
   "version": "1.0.2",
-  "description": "CLI tool to generate a start-up set of  files and folders for company products documentation hosted on a Docusaurus-powered site.",
+  "description": "CLI tool to generate a start-up set of files and folders for company products documentation hosted on a Docusaurus-powered site.",
   "main": "index.js",
+  "keywords": [
+    "docusaurus",
+    "documentation",
+    "cli",
+    "docgen",
+    "docsgen",
+    "generator",
+    "markdown",
+    "documentation-generation",
+    "documentation-generator",
+    "scaffold",
+    "scaffolding",
+    "documentation-scaffolding",
+    "documentation-scaffolder",
+    "docusaurus-scaffold"
+  ],
   "bin": {
-    "docgen": "./bin/cli.js"
+    "docs-docgen-cli": "./bin/cli.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

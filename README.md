@@ -1,4 +1,4 @@
-# docgen
+# docs-docgen-cli
 
 CLI tool generating documentation files and folders for multiple projects on a Docusaurus-powered site.
 
@@ -26,7 +26,7 @@ This is the default command, i.e. this is the command executed when no command a
 ### Usage
 
 ```bash
-docgen [build] [patterns...] [options]
+docs-docgen-cli [build] [patterns...] [options]
 ```
 
 ### Arguments
@@ -45,7 +45,7 @@ If no patterns appear, the default pattern is used: `**/*.[Pp]roducts.json`. If 
 ### Examples
 
 ```bash
-docgen
+docs-docgen-cli
 ```
 
 - look for product files in current folder and matching the `**/*.[Pp]roducts.json` pattern. If no files match this pattern, look for files matching the `__products__/**/*.json` (i.e. look for all files ending with `.json` starting with the `__products__` subfolder).
@@ -65,7 +65,7 @@ sidebars:
 ```
 
 ```bash
-docgen myproducts.products.json -v
+docs-docgen-cli myproducts.products.json -v
 ```
 
 - look for `myproducts.products.json` product list file in current folder.
@@ -243,7 +243,7 @@ Validates product list files against the product list validation schema.
 ### Usage
 
 ```bash
-docgen check [patterns...] [options]
+docs-docgen-cli check [patterns...] [options]
 ```
 
 ### Arguments
@@ -254,3 +254,9 @@ docgen check [patterns...] [options]
 
 - `-v, --verbose` - verbose output
 - `--schema <filename>` - path to validation schema file (default: `schema.json`)
+
+## Contributions
+
+The typescript is pretty complex and there are many different ways how to define components and their props so it's realy hard to support all these use cases. That means only one thing, contributions are highly welcome. Just keep in mind that each PR should also include tests for the part it's fixing.
+
+Thanks to all contributors without their help there wouldn't be a single bug fixed or feature implemented. Check the contributors tab to find out more. All those people supported this project. THANK YOU!
