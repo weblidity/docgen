@@ -101,7 +101,19 @@ program
         })
 
         // Create .outline.yaml file
+
+        // Determine the full path of the outline file
+        // If the specified path doesn't end with .outline.yaml, append it
+        // If the specified path ends with .outline, append .yaml
+        // If the specified path has no extension, append .yaml
         let outline = path.join(options.outline);
+        if (!outline.endsWith(".outline.yaml")) {
+            outline += ".outline.yaml";
+        } else if (outline.endsWith(".outline")) {
+            outline += ".yaml";
+        } else if (!outline.endsWith(".yaml")) {
+            outline += ".yaml";
+        }
         let outlineContent = hbsr.render_template('outline-file', {products: productsList});
         saveDocument(outline, outlineContent)
         if (options.verbose) {
