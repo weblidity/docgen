@@ -102,19 +102,26 @@ program
 
         // Create .outline.yaml file
 
-        // Determine the full path of the outline file
-        // If the specified path doesn't end with .outline.yaml, append it
-        // If the specified path ends with .outline, append .yaml
-        // If the specified path has no extension, append .yaml
         let outline = path.join(options.outline);
-        if (!outline.endsWith(".outline.yaml")) {
+
+        // Make sure the outline file ends with .outline.yaml
+        // If not, add the extension
+        if (!outline.endsWith(".outline.yaml") && !outline.endsWith(".outline") && !outline.endsWith(".yaml")) {
+            // No extension at all, add .outline.yaml
             outline += ".outline.yaml";
         } else if (outline.endsWith(".outline")) {
+            // Only .outline, add .yaml
             outline += ".yaml";
-        } else if (!outline.endsWith(".yaml")) {
-            outline += ".yaml";
-        }
-        let outlineContent = hbsr.render_template('outline-file', {products: productsList});
+        } 
+
+        var currentdate = new Date(); 
+var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+        let outlineContent = hbsr.render_template('outline-file', {products: productsList, datetime: datetime, appname: name});
         saveDocument(outline, outlineContent)
         if (options.verbose) {
             console.log(`Created ${outline}`);
