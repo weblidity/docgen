@@ -4,7 +4,7 @@ const { Command }             = require("commander");
 const { saveDocument }        = require("file-easy")
 const fs                      = require("fs");
 const hbsr                    = require("hbsr");
-const { findMatchingFiles slugify }   = require("../lib/utils");
+const { findMatchingFiles, slugify }   = require("../lib/utils");
 const Validator               = require('jsonschema').Validator;
 
 let { name, version, description }  = require("../package.json");
