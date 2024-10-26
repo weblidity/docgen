@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 
-const { Command }       = require("commander");
-const { saveDocument }  = require("file-easy")
-const fs                = require("fs");
-const hbsr              = require("hbsr");
-const Validator         = require('jsonschema').Validator;
+const { Command }             = require("commander");
+const { saveDocument }        = require("file-easy")
+const fs                      = require("fs");
+const hbsr                    = require("hbsr");
+const { findMatchingFiles slugify }   = require("../lib/utils");
+const Validator               = require('jsonschema').Validator;
 
-const program                       = new Command();
 let { name, version, description }  = require("../package.json");
 const { globSync }                  = require("glob");
 const path                          = require("path");
+
+const program                       = new Command();
 
 const config = {
     "patterns": [
@@ -35,7 +37,7 @@ program
     .option('--schema <filename>', 'schema file', path.join(__dirname, "..", 'schema.json'))
     .action((patterns, options) => {
 
-        let filenames = getFiles(patterns, options);
+        let filenames = findMatchingFiles(patterns, config.patterns, options);
         let productsList = [];
         filenames.forEach((filename) => {
             let productsDefined = JSON.parse(fs.readFileSync(filename, 'utf8'));
@@ -139,7 +141,8 @@ program
 
     .action((patterns, options) => {
 
-        let filenames = getFiles(patterns, options);
+        console.log("patterns", patterns)
+        let filenames = findMatchingFiles(patterns, config.patterns, options);
         if (filenames.length === 0) {
             console.log("no files found");
             return true;
@@ -175,57 +178,3 @@ program
 // program.parse("node ./bin/cli.js -v".split(" "));
 
 program.parse();
-
-/**
- * Given an array of patterns, returns an array of filenames matching the patterns.
- * If no patterns are given, the function uses the default patterns defined in the
- * module.
- *
- * @param {Array<string>} patterns - Array of glob patterns to search for.
- * @param {Object} options - Options to globSync.
- * @throws {Error} If the patterns array is not an array.
- * @returns {Array<string>} Array of filenames.
- */
-function getFiles(patterns, options) {
-    try {
-        if (!patterns || !Array.isArray(patterns)) {
-            throw new Error("Patterns must be an array");
-        }
-
-        const filenames = patterns.length > 0
-            ? globSync(patterns)
-            : globSync(config.patterns[0], { cwd: process.cwd() }).concat(
-                globSync(config.patterns[1], { cwd: process.cwd() })
-            );
-
-        return filenames;
-    } catch (error) {
-        console.error("Error getting files:", error.message);
-        return [];
-    }
-}
-
-/**
- * Slugify a string.
- *
- * @param {string|null|undefined} input The string to slugify.
- * @throws {Error} If the input is not a string.
- * @throws {Error} If the input is null or undefined.
- * @returns {string} The slugified string.
- */
-function slugify(input) {
-    if (input === null || input === undefined) {
-        throw new Error("Input to slugify cannot be null or undefined");
-    }
-    if (typeof input !== "string") {
-        throw new Error("Input to slugify must be a string");
-    }
-
-    return input
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w-]+/g, '')
-        .replace(/--+/g, '-')
-        .replace(/^-+/, '')
-        .replace(/-+$/, '');
-}
