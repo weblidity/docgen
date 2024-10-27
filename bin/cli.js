@@ -51,7 +51,7 @@ program
             })
         })
 
-        hbsr.options.template_extension = options.templates;
+        hbsr.options.template_path = options.templates;
 
         // Create productId if not specified and build an object
         //  when product definition is string
@@ -179,6 +179,6 @@ program
     })
 
 // TODO: Remove the program.parse with a split string as argument when done
-// program.parse("node ./bin/cli.js -v".split(" "));
+// program.parse("node ./bin/cli.js ".split(" "));
 
 program.parse();
