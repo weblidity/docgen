@@ -10,14 +10,14 @@
 
 iongireada:
   name: Ion Gireada
-  title: Founder, Chief Decision Makker @ WEBLIDITY
+  title: Founder, Chief Decision Maker @ WEBLIDITY
   url: https://github.com/ioncakephper
   # image_url: https://github.com/yangshun.png
   page: true
   socials:
     # x: yangshunz
     github: ioncakephper
-    linkedid: ion-gireada-223929
+    # linkedid: "ion-gireada-223929"
 
 # slorber:
 #   name: Sébastien Lorber
