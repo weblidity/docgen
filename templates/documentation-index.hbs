@@ -9,7 +9,7 @@ Explore documentation and articles for each product.
 {{#if products}}
 {{#each products as |product|}}
 {{#with product}}
-- [**{{{label}}}**](./{{{productId}}}){{#if description}} - {{description}}{{/if}}
+- [**{{{label}}}**](.docs/{{{productId}}}){{#if description}} - {{description}}{{/if}}
 {{/with}}
 {{/each}}
 {{else}}

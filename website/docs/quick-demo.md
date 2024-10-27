@@ -50,7 +50,14 @@ It contains definitions for "Product One" and "Product Two".
 In your work folder, i.e. `my-folder`:
 
 ```bash
-npx docs-docgen-cli demo.products.json -d ./website/docs -o ./website/products.outline.yaml -v
+npx docs-docgen-cli demo.products.json -v
+```
+
+```txt
+Created website\docs\index.md
+Created website\docs\product-one\index.md
+Created website\docs\product-two\index.md
+Created website\products.outline.yaml
 ```
 
 It generates the following:
