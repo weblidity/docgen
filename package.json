@@ -1,6 +1,6 @@
 {
   "name": "docs-docgen-cli",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "CLI tool to generate a start-up set of files and folders for company products documentation hosted on a Docusaurus-powered site.",
   "main": "index.js",
   "keywords": [
