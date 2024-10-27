@@ -45,7 +45,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/weblidity/docgen/blob/main/website/docs/',
+            'https://github.com/weblidity/docgen/blob/main/website/',
         },
         blog: {
           showReadingTime: true,
@@ -56,7 +56,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/weblidity/docgen/blob/main/website/blog/',
+            'https://github.com/weblidity/docgen/blob/main/website/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
