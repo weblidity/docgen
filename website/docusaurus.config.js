@@ -56,7 +56,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/weblidity/docgen/blob/main/website/blog/',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -89,12 +89,11 @@ const config = {
         },
         
         items: [
-          // {to: '/docs', label: 'Documentation', position: 'left'},
           {
             type: 'docSidebar',
             sidebarId: 'docgenSidebar',
             position: 'left',
-            label: 'Documentation',
+            label: 'Docs',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
