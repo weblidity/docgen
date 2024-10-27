@@ -1,6 +1,6 @@
 # Quick demo
 
-## Step 1. Check `docgen` is available:
+## Step 1. Check `docgen` is available
 
 ```bash
 docgen -V
