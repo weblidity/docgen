@@ -51,6 +51,8 @@ program
             })
         })
 
+        hbsr.options.template_extension = options.templates;
+
         // Create productId if not specified and build an object
         //  when product definition is string
 
