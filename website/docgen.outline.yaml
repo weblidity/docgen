@@ -1,0 +1,28 @@
+
+
+sidebars:
+
+    #
+    # Product five sidebar
+    #
+    - label: "docgenSidebar"
+      items:
+
+         #
+         # Product five documentation top page
+         #
+          - label: "Overview"
+            title: "Welcome DocGen documentation"
+            slug: "overview"
+            brief: "A quick understanding of DocGen"
+
+            headings:
+                - Introduction
+                - How to use DocGen
+          - label: "Getting started"
+            headings:
+                - Installation
+                - Usage
+                - Product list file
+                
+

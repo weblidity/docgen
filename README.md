@@ -4,7 +4,8 @@
 </p>
 
 
-<h1 align="center">docs-docgen-cli</h1>
+<h1 align="center">Docs DocGen CLI</h1>
+<h2 align="center">Code name: <code>DocGen</code></h2>
 
 <div align="center">
 
