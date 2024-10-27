@@ -25,16 +25,18 @@ program
     .version(version)
     .description(description);
 
+path.resolve(__dirname, "..", "templates");
+
 program
     .command('build', { isDefault: true })
     .alias('b')
     .description('build documentation folders and files for multiple company products')
     .argument('[patterns...]', 'pattern for products list file')
     .option('-v, --verbose', 'verbose output')
-    .option('-t, --templates <path>', 'templates folder', path.join( "..", "templates"))
+    .option('-t, --templates <path>', 'templates folder', path.resolve(__dirname, "..", "templates"))
     .option('-o, --outline <filename>', 'outline file', 'website/products.outline.yaml')
     .option('-d, --docs <path>', 'documentation folder', 'website/docs')
-    .option('--schema <filename>', 'schema file', path.join("..", 'schema.json'))
+    .option('--schema <filename>', 'schema file', path.resolve(__dirname, "..", 'schema.json'))
     .action((patterns, options) => {
 
         let filenames = findMatchingFiles(patterns, config.patterns, options);
