@@ -19,10 +19,18 @@ sidebars:
             headings:
                 - Introduction
                 - How to use DocGen
+
           - label: "Getting started"
             headings:
                 - Installation
                 - Usage
                 - Product list file
+
+          - label: Quick demo
+            headings:
+              - Step 1. Check docgen is available
+              - Step 2. Local Docusaurus project
+              - Step 3. Create products list files
+              - Step 4: Launch docs-docgen-cli
                 
 

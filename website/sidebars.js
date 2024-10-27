@@ -32,7 +32,8 @@
 const sidebars = {
   "docgenSidebar": [
     "overview",
-    "getting-started"
+    "getting-started",
+    "quick-demo",
   ]
 };
 
