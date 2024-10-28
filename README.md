@@ -3,7 +3,6 @@
  <img width=200px height=200px src="https://i.imgur.com/0Axr7in.jpg" alt="Docs DocGen CLI Project Logo"></a>
 </p>
 
-
 <h1 align="center">Docs DocGen CLI</h1>
 <h2 align="center">Code name: <code>DocGen</code></h2>
 
