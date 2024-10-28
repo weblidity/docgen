@@ -180,97 +180,97 @@ Property | Description | Default | Example |
 
 1. Defines two products, "Product One" and "Product Two" using strings.
 
-```json
-[
-    "Product One",
-    "Product Two"
-]
-```
+    ```json
+    [
+        "Product One",
+        "Product Two"
+    ]
+    ```
 
-The equivalent of object definition:
+    The equivalent of object definition:
 
-```json
-[
-    {
-        "label": "Product One",
-        "productId": "product-one"
-    },
-    {
-        "label": "Product Two",
-        "productId": "product-two"
-    }
-]
-```
+    ```json
+    [
+        {
+            "label": "Product One",
+            "productId": "product-one"
+        },
+        {
+            "label": "Product Two",
+            "productId": "product-two"
+        }
+    ]
+    ```
 
 2. Defines three product, two in string format and the third in object format:
 
-```json
-[
-    "Product One",
-    {
-        "label": "Product Three"
-    },
-    "Product Two"
-]
-```
+    ```json
+    [
+        "Product One",
+        {
+            "label": "Product Three"
+        },
+        "Product Two"
+    ]
+    ```
 
-The equivalent of object definition:
+    The equivalent of object definition:
 
-```json
-[
-    {
-        "label": "Product One",
-        "productId": "product-one"
-    },
-    {
-        "label": "Product Three",
-        "productId": "product-three"
-    },
-    {
-        "label": "Product Two",
-        "productId": "product-two"
-    }
-]
-```
+    ```json
+    [
+        {
+            "label": "Product One",
+            "productId": "product-one"
+        },
+        {
+            "label": "Product Three",
+            "productId": "product-three"
+        },
+        {
+            "label": "Product Two",
+            "productId": "product-two"
+        }
+    ]
+    ```
 
 3. Defines four products, two in string format the third and fourth in object format. The fourth product has a specified `productId` value
 
-```json
-[
-    "Product One",
-    {
-        "label": "Product Three"
-    },
-    "Product Two",
-    {
-        "label": "Product Four",
-        "productId": "pr-4"
-    }
-]
-```
+    ```json
+    [
+        "Product One",
+        {
+            "label": "Product Three"
+        },
+        "Product Two",
+        {
+            "label": "Product Four",
+            "productId": "pr-4"
+        }
+    ]
+    ```
 
-The equivalent of object definition:
+    The equivalent of object definition:
 
-```json
-[
-    {
-        "label": "Product One",
-        "productId": "product-one"
-    },
-    {
-        "label": "Product Three",
-        "productId": "product-three"
-    },
-    {
-        "label": "Product Two",
-        "productId": "product-two"
-    },
-    {
-        "label": "Product Four",
-        "productId": "pr-4"
-    }
-]
-```
+    ```json
+    [
+        {
+            "label": "Product One",
+            "productId": "product-one"
+        },
+        {
+            "label": "Product Three",
+            "productId": "product-three"
+        },
+        {
+            "label": "Product Two",
+            "productId": "product-two"
+        },
+        {
+            "label": "Product Four",
+            "productId": "pr-4"
+        }
+    ]
+    ```
 
 ## `check` command
 
@@ -291,3 +291,6 @@ docs-docgen-cli check [patterns...] [options]
 - `-v, --verbose` - verbose output
 - `--schema <filename>` - path to validation schema file (default: `schema.json`)
 
+## Quick demo
+
+For a quick demo of how to use `docgen CLI`, visit [Quick demo](https://weblidity.github.io/docgen/docs/quick-demo)

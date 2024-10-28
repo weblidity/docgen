@@ -66,7 +66,7 @@ It generates the following:
 * `website/docs/<productId>/index.md` - the product summary page in product folder.
 * `website/products.outline.yaml`
 
-The generated `website/products.outline.yaml` contains a sidebar content which `skelo CLI` will use in the next step.
+The generated `website/products.outline.yaml` file contains a sidebar content which `skelo CLI` will use in the next step.
 
 ```yaml
 sidebars:

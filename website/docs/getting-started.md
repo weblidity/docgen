@@ -48,7 +48,7 @@ docgen -V
     /// ...
     items: [
         {
-            "to": "/docs/index",
+            "to": "/docs",
             "label": "Documentation"
         },
         //...
