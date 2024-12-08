@@ -448,6 +448,60 @@ Commands:
   farewell <name>  Bid farewell to a person
   help [command]   display help for command
 ```
+```bash
+
+Usage: my-cli [options] [command]
+
+A CLI tool for various tasks
+
+Options:
+  -V, --version    output the version number
+  -h, --help       display help for command
+
+Commands:
+  greet <name>     Greet a person
+  farewell <name>  Bid farewell to a person
+  help [command]   display help for command
+```
+
+**`greet` command:**
+
+```bash
+Usage: my-cli greet [options] <name>
+
+Greet a person
+
+Options:
+  -h, --help  display help for command
+```
+
+**`farewell` command:**
+
+```bash
+Usage: my-cli farewell [options] <name>
+
+Bid farewell to a person
+
+Options:
+  -h, --help  display help for command
+```
+
+**`help` command:**
+
+```bash
+Usage: my-cli [options] [command]
+
+A CLI tool for various tasks
+
+Options:
+  -V, --version    output the version number
+  -h, --help       display help for command
+
+Commands:
+  greet <name>     Greet a person
+  farewell <name>  Bid farewell to a person
+  help [command]   display help for command
+```
 <!--- INSERT_END:USAGE.md --->
 
 ### Arguments
