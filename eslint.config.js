@@ -1,22 +1,28 @@
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+
+const compat = new FlatCompat({
+  baseDirectory: import.meta.url,
+});
+
+export default [
+  js.configs.recommended,
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tsPlugin,
+    },
+    rules: {
+      ...tsPlugin.configs.recommended.rules,
+    },
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-  ],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
-  },
-  plugins: [
-    '@typescript-eslint',
-  ],
-  rules: {
-    // Add your custom rules here
-  },
-};
+  ...compat.extends('plugin:@typescript-eslint/recommended'),
+];
