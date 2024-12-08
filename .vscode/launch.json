@@ -9,6 +9,16 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}\\index.js"
-        }
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Generate UsageLaunch Program",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\generate-usage.js",
+            "args": [".\\bin\\cli.js"]
+        },
     ]
 }

@@ -281,6 +281,9 @@ Validates product list files against the product list validation schema.
 docs-docgen-cli check [patterns...] [options]
 ```
 
+<!--- INSERT_BEGIN:USAGE.md --->
+<!--- INSERT_END:USAGE.md --->
+
 ### Arguments
 
 - `[patterns...]` - optional list of product list filename patterns
