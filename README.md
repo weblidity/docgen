@@ -287,6 +287,61 @@ docs-docgen-cli check [patterns...] [options]
 ```
 
 <!--- INSERT_BEGIN:USAGE.md --->
+<!-- Updated on 2024-12-08 15:44:43 -->
+```bash
+
+Usage: my-cli [options] [command]
+
+A CLI tool for various tasks
+
+Options:
+  -V, --version    output the version number
+  -h, --help       display help for command
+
+Commands:
+  greet <name>     Greet a person
+  farewell <name>  Bid farewell to a person
+  help [command]   display help for command
+```
+
+**`greet` command:**
+
+```bash
+Usage: my-cli greet [options] <name>
+
+Greet a person
+
+Options:
+  -h, --help  display help for command
+```
+
+**`farewell` command:**
+
+```bash
+Usage: my-cli farewell [options] <name>
+
+Bid farewell to a person
+
+Options:
+  -h, --help  display help for command
+```
+
+**`help` command:**
+
+```bash
+Usage: my-cli [options] [command]
+
+A CLI tool for various tasks
+
+Options:
+  -V, --version    output the version number
+  -h, --help       display help for command
+
+Commands:
+  greet <name>     Greet a person
+  farewell <name>  Bid farewell to a person
+  help [command]   display help for command
+```
 ```bash
 
 Usage: docs-docgen-cli [options] [command]
@@ -361,17 +416,3 @@ Commands:
   check [options] [patterns...]    check valid structure of product list files
   help [command]                   display help for command
 ```
-<!--- INSERT_END:USAGE.md --->
-
-### Arguments
-
-- `[patterns...]` - optional list of product list filename patterns
-
-### Options
-
-- `-v, --verbose` - verbose output
-- `--schema <filename>` - path to validation schema file (default: `schema.json`)
-
-## Quick demo
-
-For a quick demo of how to use `docgen CLI`, visit [Quick demo](https://weblidity.github.io/docgen/docs/quick-demo)
