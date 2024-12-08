@@ -1,0 +1,34 @@
+name: Update README
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Generate Usage Section
+      run: |
+        node generate-usage.js path-to-your-cli.js
+
+    - name: Insert content into README
+      run: |
+        CONTENT=$(cat USAGE.md)
+        # Replace short-format with block format
+        sed -i '/<!-- INSERT:USAGE.md -->/c\<!--- INSERT_BEGIN:USAGE.md --->\n<!--- INSERT_END:USAGE.md --->' README.md
+        # Insert content between block format tags
+        sed -i '/<!--- INSERT_BEGIN:USAGE.md --->/r /dev/stdin' README.md <<< "$CONTENT"
+
+    - name: Commit changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add README.md
+        git commit -m "Update README with usage content"
+        git push
