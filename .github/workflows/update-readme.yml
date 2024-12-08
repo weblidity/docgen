@@ -9,6 +9,10 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
 
+    # Define environment variables
+    env:
+      CLI_PATH: ./bin/mock-cli.js  # Path to the CLI file
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -25,15 +29,15 @@ jobs:
       run: npm install
 
     - name: Run Prettier
-      run: npx prettier --write ./bin/mock-cli.js
+      run: npx prettier --write $CLI_PATH  # Format the CLI file using Prettier
 
     - name: Generate Documentation
       if: ${{ hashFiles('jsdoc.json') != '' }}
-      run: npx jsdoc -c jsdoc.json
+      run: npx jsdoc -c jsdoc.json  # Generate documentation if jsdoc.json exists
 
     - name: Generate Usage Section
       run: |
-        node generate-usage.js ./bin/mock-cli.js
+        node generate-usage.js $CLI_PATH  # Generate the usage section using the CLI file path
 
     - name: Insert content into README
       run: |
