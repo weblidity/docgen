@@ -1,7 +1,5 @@
 name: Update README
 
-# ==============================
-# 
 # This GitHub Action updates the README file with the usage section generated from the CLI.
 # It performs the following steps:
 # 1. Checks out the repository.
@@ -13,9 +11,12 @@ name: Update README
 # 7. Inserts the generated usage section into the README file.
 # 8. Commits and pushes the changes to the repository.
 # 9. Notifies on success or failure.
+
+# ==========================================================================
 #
 # To use this action, modify the CLI_PATH variable to point to your CLI file.
-# ==============================
+# 
+# ==========================================================================
 
 on:
   push:
