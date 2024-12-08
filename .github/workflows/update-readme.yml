@@ -25,7 +25,7 @@ jobs:
       run: npm install
 
     - name: Run ESLint
-      run: npx eslint ./bin/mock-cli.js
+      run: npx eslint ./bin/mock-cli.js --config eslint.config.js
 
     - name: Run Prettier
       run: npx prettier --write ./bin/mock-cli.js
