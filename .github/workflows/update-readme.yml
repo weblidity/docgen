@@ -15,7 +15,7 @@ jobs:
 
     - name: Generate Usage Section
       run: |
-        node generate-usage.js path-to-your-cli.js
+        node generate-usage.js ./bin/mock-cli.js
 
     - name: Insert content into README
       run: |
