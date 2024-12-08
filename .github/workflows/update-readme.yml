@@ -1,6 +1,5 @@
 name: Update README
 
-
 on:
   push:
     branches:
@@ -26,7 +25,7 @@ jobs:
       run: npm install
 
     - name: Run ESLint
-      run: npx eslint ./bin/mock-cli.js --config eslint.config.js
+      run: npx eslint ./bin/mock-cli.js --config eslint.config.mjs
 
     - name: Run Prettier
       run: npx prettier --write ./bin/mock-cli.js
