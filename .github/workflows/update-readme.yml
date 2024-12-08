@@ -1,5 +1,7 @@
 name: Update README
 
+# ==============================
+# 
 # This GitHub Action updates the README file with the usage section generated from the CLI.
 # It performs the following steps:
 # 1. Checks out the repository.
@@ -11,10 +13,9 @@ name: Update README
 # 7. Inserts the generated usage section into the README file.
 # 8. Commits and pushes the changes to the repository.
 # 9. Notifies on success or failure.
-
-# ==========================================================================
+#
 # To use this action, modify the CLI_PATH variable to point to your CLI file.
-# ==========================================================================
+# ==============================
 
 on:
   push:
@@ -64,10 +65,8 @@ jobs:
         if grep -q '<!--- INSERT_BEGIN:USAGE.md --->' README.md; then
           awk '/<!--- INSERT_BEGIN:USAGE.md --->/{print;print CONTENT;next} /<!--- INSERT_END:USAGE.md --->/{found=1} !found' CONTENT="$CONTENT" README.md > README.tmp && mv README.tmp README.md
         else
-          # Replace short-format with block format
-          sed -i '/<!-- INSERT:USAGE.md -->/c\<!--- INSERT_BEGIN:USAGE.md --->\n<!--- INSERT_END:USAGE.md --->' README.md
-          # Insert content between block format tags
-          sed -i '/<!--- INSERT_BEGIN:USAGE.md --->/r /dev/stdin' README.md <<< "$CONTENT"
+          # Replace short-format with block format and content
+          sed -i '/<!-- INSERT:USAGE.md -->/c\<!--- INSERT_BEGIN:USAGE.md --->\n'"$CONTENT"'\n<!--- INSERT_END:USAGE.md --->' README.md
         fi
 
     - name: Commit changes
