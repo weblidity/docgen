@@ -28,6 +28,7 @@ jobs:
       run: npx prettier --write ./bin/mock-cli.js
 
     - name: Generate Documentation
+      if: ${{ hashFiles('jsdoc.json') != '' }}
       run: npx jsdoc -c jsdoc.json
 
     - name: Generate Usage Section
