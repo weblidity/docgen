@@ -8,12 +8,16 @@
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/status-active-success.svg)]() ![NPM Version](https://img.shields.io/npm/v/docs-docgen-cli)
+[![Status](https://img.shields.io/badge/status-active-success.svg)][![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fweblidity%2Fdocgen.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fweblidity%2Fdocgen?ref=badge_shield)
+() ![NPM Version](https://img.shields.io/npm/v/docs-docgen-cli)
  [![GitHub Issues](https://img.shields.io/github/issues/weblidity/docgen.svg)](https://github.com/weblidity/docgen/issues) [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/weblidity/docgen.svg)](https://github.com/weblidity/docgen/pulls) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 CLI tool generating documentation files and folders for multiple projects on a Docusaurus-powered site.
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fweblidity%2Fdocgen.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fweblidity%2Fdocgen?ref=badge_large)
 
 ## Installation
 
