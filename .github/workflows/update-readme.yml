@@ -28,7 +28,7 @@ jobs:
 
     # Define environment variables
     env:
-      CLI_PATH: ./bin/mock-cli.js  # Path to the CLI file
+      CLI_PATH: ./bin/cli.js  # Path to the CLI file
 
     steps:
     - name: Checkout repository
