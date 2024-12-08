@@ -1,5 +1,7 @@
 name: Update README
 
+# ==============================
+# 
 # This GitHub Action updates the README file with the usage section generated from the CLI.
 # It performs the following steps:
 # 1. Checks out the repository.
@@ -11,12 +13,9 @@ name: Update README
 # 7. Inserts the generated usage section into the README file.
 # 8. Commits and pushes the changes to the repository.
 # 9. Notifies on success or failure.
-
-# ==========================================================================
 #
 # To use this action, modify the CLI_PATH variable to point to your CLI file.
-# 
-# ==========================================================================
+# ==============================
 
 on:
   push:
@@ -29,7 +28,7 @@ jobs:
 
     # Define environment variables
     env:
-      CLI_PATH: ./bin/cli.js  # Path to the CLI file
+      CLI_PATH: ./bin/mock-cli.js  # Path to the CLI file
 
     steps:
     - name: Checkout repository
@@ -60,10 +59,11 @@ jobs:
     - name: Insert content into README
       run: |
         CONTENT=$(cat USAGE.md)
+        TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
+        CONTENT="<!-- Updated on $TIMESTAMP -->\n$CONTENT"
         # Replace content between block tags if they exist
         if grep -q '<!--- INSERT_BEGIN:USAGE.md --->' README.md; then
-          sed -i '/<!--- INSERT_BEGIN:USAGE.md --->/,/<!--- INSERT_END:USAGE.md --->/{//!d;}' README.md
-          sed -i '/<!--- INSERT_BEGIN:USAGE.md --->/r /dev/stdin' README.md <<< "$CONTENT"
+          awk '/<!--- INSERT_BEGIN:USAGE.md --->/{print;print CONTENT;next} /<!--- INSERT_END:USAGE.md --->/{found=1} !found' CONTENT="$CONTENT" README.md > README.tmp && mv README.tmp README.md
         else
           # Replace short-format with block format
           sed -i '/<!-- INSERT:USAGE.md -->/c\<!--- INSERT_BEGIN:USAGE.md --->\n<!--- INSERT_END:USAGE.md --->' README.md
