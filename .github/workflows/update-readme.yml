@@ -1,5 +1,17 @@
 name: Update README
 
+# This GitHub Action updates the README file with the usage section generated from the CLI.
+# It performs the following steps:
+# 1. Checks out the repository.
+# 2. Caches Node.js modules to speed up the workflow.
+# 3. Installs dependencies.
+# 4. Runs Prettier to format the CLI file.
+# 5. Generates documentation if jsdoc.json exists.
+# 6. Generates the usage section from the CLI.
+# 7. Inserts the generated usage section into the README file.
+# 8. Commits and pushes the changes to the repository.
+# 9. Notifies on success or failure.
+
 on:
   push:
     branches:
@@ -11,7 +23,7 @@ jobs:
 
     # Define environment variables
     env:
-      CLI_PATH: ./bin/mock-cli.js  # Path to the CLI file
+      CLI_PATH: ./bin/cli.js  # Path to the CLI file
 
     steps:
     - name: Checkout repository
