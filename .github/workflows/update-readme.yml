@@ -13,8 +13,28 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
     - name: Install dependencies
       run: npm install
+
+    - name: Run ESLint
+      run: npx eslint ./bin/mock-cli.js
+
+    - name: Run Prettier
+      run: npx prettier --write ./bin/mock-cli.js
+
+    - name: Run Tests
+      run: npm test
+
+    - name: Generate Documentation
+      run: npx jsdoc -c jsdoc.json
 
     - name: Generate Usage Section
       run: |
@@ -35,3 +55,11 @@ jobs:
         git add README.md
         git commit -m "Update README with usage content"
         git push
+
+    - name: Notify on Success
+      if: success()
+      run: echo "The README update was successful!"
+
+    - name: Notify on Failure
+      if: failure()
+      run: echo "The README update failed."
