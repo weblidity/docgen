@@ -290,60 +290,80 @@ docs-docgen-cli check [patterns...] [options]
 
 <!-- INSERT:USAGE.md -->
 <!--- INSERT_BEGIN:USAGE.md --->
-<!-- Updated on 2024-12-09 06:42:53 -->
+<!-- Updated on 2024-12-09 06:45:19 -->
 ```bash
 
-Usage: my-cli [options] [command]
+Usage: docs-docgen-cli [options] [command]
 
-A CLI tool for various tasks
+CLI tool to generate a start-up set of files and folders for company products
+documentation hosted on a Docusaurus-powered site.
 
 Options:
-  -V, --version    output the version number
-  -h, --help       display help for command
+  -V, --version                    output the version number
+  -h, --help                       display help for command
 
 Commands:
-  greet <name>     Greet a person
-  farewell <name>  Bid farewell to a person
-  help [command]   display help for command
+  build|b [options] [patterns...]  build documentation folders and files for
+                                   multiple company products
+  check [options] [patterns...]    check valid structure of product list files
+  help [command]                   display help for command
 ```
 
-**`greet` command:**
+**`build` command:**
 
 ```bash
-Usage: my-cli greet [options] <name>
+Usage: docs-docgen-cli build|b [options] [patterns...]
 
-Greet a person
+build documentation folders and files for multiple company products
+
+Arguments:
+  patterns                  pattern for products list file
 
 Options:
-  -h, --help  display help for command
+  -v, --verbose             verbose output
+  -t, --templates <path>    templates folder (default:
+                            "/home/runner/work/docgen/docgen/templates")
+  -o, --outline <filename>  outline file (default:
+                            "website/products.outline.yaml")
+  -d, --docs <path>         documentation folder (default: "website/docs")
+  --schema <filename>       schema file (default:
+                            "/home/runner/work/docgen/docgen/schema.json")
+  -h, --help                display help for command
 ```
 
-**`farewell` command:**
+**`check` command:**
 
 ```bash
-Usage: my-cli farewell [options] <name>
+Usage: docs-docgen-cli check [options] [patterns...]
 
-Bid farewell to a person
+check valid structure of product list files
+
+Arguments:
+  patterns             pattern for products list file
 
 Options:
-  -h, --help  display help for command
+  -v, --verbose        verbose output
+  --schema <filename>  schema file (default: "schema.json")
+  -h, --help           display help for command
 ```
 
 **`help` command:**
 
 ```bash
-Usage: my-cli [options] [command]
+Usage: docs-docgen-cli [options] [command]
 
-A CLI tool for various tasks
+CLI tool to generate a start-up set of files and folders for company products
+documentation hosted on a Docusaurus-powered site.
 
 Options:
-  -V, --version    output the version number
-  -h, --help       display help for command
+  -V, --version                    output the version number
+  -h, --help                       display help for command
 
 Commands:
-  greet <name>     Greet a person
-  farewell <name>  Bid farewell to a person
-  help [command]   display help for command
+  build|b [options] [patterns...]  build documentation folders and files for
+                                   multiple company products
+  check [options] [patterns...]    check valid structure of product list files
+  help [command]                   display help for command
 ```
 <!--- INSERT_END:USAGE.md --->
 
