@@ -78,8 +78,6 @@ jobs:
           echo "::set-output name=updated::false"
         fi
       shell: /usr/bin/bash -e {0}
-      env:
-        CLI_PATH: ./bin/mock-cli.js
 
     - name: Commit changes
       if: steps.insert-content.outputs.updated == 'true'
