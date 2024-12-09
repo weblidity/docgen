@@ -290,7 +290,7 @@ docs-docgen-cli check [patterns...] [options]
 
 <!-- INSERT:USAGE.md -->
 <!--- INSERT_BEGIN:USAGE.md --->
-<!-- Updated on 2024-12-09 06:45:19 -->
+<!-- Updated on 2024-12-09 06:49:54 for CLI: ./bin/cli.js -->
 ```bash
 
 Usage: docs-docgen-cli [options] [command]
