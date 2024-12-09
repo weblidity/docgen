@@ -278,6 +278,7 @@ Property | Description | Default | Example |
 
 ## `check` command
 
+
 Validates product list files against the product list validation schema.
 
 
