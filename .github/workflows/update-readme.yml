@@ -61,7 +61,7 @@ jobs:
       run: |
         CONTENT=$(cat USAGE.md)
         TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
-        CONTENT="<!-- Updated on $TIMESTAMP -->\n$CONTENT"
+        CONTENT="<!-- Updated on $TIMESTAMP for CLI: $CLI_PATH -->\n$CONTENT"
         
         # Check for existing block tags or short tag
         if grep -q '<!--- INSERT_BEGIN:USAGE.md --->' README.md && grep -q '<!--- INSERT_END:USAGE.md --->' README.md; then
