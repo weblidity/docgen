@@ -287,5 +287,5 @@ Validates product list files against the product list validation schema.
 docs-docgen-cli check [patterns...] [options]
 ```
 
-
+<!-- INSERT:USAGE.md -->
 
