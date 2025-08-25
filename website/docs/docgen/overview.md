@@ -7,7 +7,6 @@ slug: overview
 
 A quick understanding of DocGen
 
-
 ## Introduction
 
 Why do it, what does it do?
@@ -40,8 +39,3 @@ This structure allows visitors to view a list of products, to view the product p
 The product generates the summary page and product index page for each product. It also generates an `.outline.yaml` file that you use use with `skelo CLI` to generate the product top documentation page.
 
 After generating the folders and index.md pages, you have to generate the sidebars for each product and the `sidebars.js` file that tells Docusaurus the structure for each product documentation. While you can do this manually, a much easier method is to use the `products.outline.yaml` with skelo CLI.
-
-
-
-
-

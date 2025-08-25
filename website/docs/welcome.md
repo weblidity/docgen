@@ -24,19 +24,17 @@ npx create-docusarus@latest website classic
 ```
 
 :::info
+
 - When prompted, choose JavaScript
 - Follow the prompt to cd to `website` and `npm run start`
-:::
+  :::
 
 ### Step 2: Create products list file
 
 1. In `my-project`, create `demo.products.json`
 
 ```json
-[
-    "DocGen",
-    "Skelo"
-]
+["DocGen", "Skelo"]
 ```
 
 This will create documentation for two products, each in its own folder.
@@ -69,8 +67,7 @@ Edit `docusaurus.config.js` in the `website` folder:
 ```js
 // ... look the items property in the themeConfig
 items: [
-    {to: '/docs', label: "Documentation"},
-    // ...
-]
+  { to: "/docs", label: "Documentation" },
+  // ...
+];
 ```
-
