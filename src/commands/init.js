@@ -1,6 +1,12 @@
+// Path: src/commands/init.js
 const fs = require("fs");
 const path = require("path");
 
+/**
+ * Defines the 'init' command for the CLI.
+ * This command creates a configuration file, optionally with default values or a custom filename.
+ * @param {object} program - The Commander.js program instance.
+ */
 module.exports = (program) => {
   program
     .command("init")

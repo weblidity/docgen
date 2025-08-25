@@ -1,7 +1,13 @@
+// Path: src/cli/program.js
 const { Command } = require("commander");
 const path = require("path");
 const { loadCommands } = require("./loadCommands");
 
+/**
+ * Builds the Commander.js program instance for the CLI.
+ * It sets up the program's name, description, version, global options, and loads commands.
+ * @returns {object} The Commander.js program instance.
+ */
 function buildProgram() {
   const program = new Command();
   const pkg = require("../../package.json");

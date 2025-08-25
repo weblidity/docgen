@@ -1,57 +1,68 @@
 <p align="center">
   <a href="">
- <img width=200px height=200px src="https://i.imgur.com/0Axr7in.jpg" alt="Docs DocGen CLI Project Logo"></a>
+ <img width=200px height=200px src="https://i.imgur.com/0Axr7in.jpg" alt="prodpage-cli Project Logo"></a>
 </p>
 
-<h1 align="center">Docs DocGen CLI</h1>
-<h2 align="center">Code name: <code>DocGen</code></h2>
+<h1 align="center">Prodpage CLI</h1>
+<h2 align="center">Code name: <code>prodpage</code></h2>
 
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)][![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fweblidity%2Fdocgen.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fweblidity%2Fdocgen?ref=badge_shield)
-() ![NPM Version](https://img.shields.io/npm/v/docs-docgen-cli)
+() ![NPM Version](https://img.shields.io/npm/v/prodpage-cli)
 [![GitHub Issues](https://img.shields.io/github/issues/weblidity/docgen.svg)](https://github.com/weblidity/docgen/issues) [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/weblidity/docgen.svg)](https://github.com/weblidity/docgen/pulls) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
-CLI tool generating documentation files and folders for multiple projects on a Docusaurus-powered site.
+## Description
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fweblidity%2Fdocgen.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fweblidity%2Fdocgen?ref=badge_large)
+CLI tool generating documentation files and folders for multiple projects on a Docusaurus-powered site. It helps in scaffolding the documentation structure, validating product list files, and managing configuration.
+
+## Features
+
+- **Documentation Scaffolding**: Build files and folders for company product documentation structure for a Docusaurus-powered site.
+- **Product List Validation**: Check valid structure of product list files against a defined schema.
+- **Configuration Management**: Create and manage configuration files for the CLI.
+- **Extensible Commands**: Easily add new commands to the CLI.
 
 ## Installation
 
 Install the package locally using the global switch.
 
 ```bash
-npm install docs-docgen-cli -g
+npm install prodpage-cli -g
 ```
 
-After installing it locally, you can use from any folder on your computer. Check `docs-docgen-cli` is available:
+After installing it locally, you can use from any folder on your computer. Check `prodpage-cli` is available:
 
 ```bash
-docs-docgen-cli -V
+prodpage-cli -V
 # output
 # 1.0.3
 ```
 
-Alternativelly, run `docs-docgen-cli` without installing it locally (recommended).
+Alternatively, run `prodpage-cli` without installing it locally (recommended).
 
 ```bash
-npx docs-docgen-cli -V
+npx prodpage-cli -V
 ```
 
-## Commands
+## Usage
 
-- `build` - build files and folders for company product documentation structure for a Docusaurus-powered site.
-- `check` - check valid structure of product list files.
-- `help` - provide help text for a command.
+General usage of the CLI:
 
-## Options
+```bash
+prodpage [options] [command]
+```
+
+### Global Options
 
 - `-h, --help` - provide application help.
 - `-V, --version` -- provide current application version.
 
-## `build` command
+### Commands
+
+#### `build` command
 
 This is the default command, i.e. this is the command executed when no command appears on the command line.
 
@@ -61,17 +72,17 @@ This is the default command, i.e. this is the command executed when no command a
 4. **In the `docs` folder, generate `index.md`** containing a list of products and links to product index page.
 5. **Generate an `.outline.yaml`** that you will use with `Skelo CLI` to complete the documentation start-up.
 
-### Usage
+##### Usage
 
 ```bash
-docs-docgen-cli [build] [patterns...] [options]
+prodpage-cli [build] [patterns...] [options]
 ```
 
-### Arguments
+##### Arguments
 
 - `[patterns...]` - optional list of product list filename patterns
 
-### Options
+##### Options
 
 - `-d, --docs <path>` - path to Docusaurus docs folder. (default: `website/docs`)
 - `-o, --outline <filename>` - name of the outline file intended for Skelo CLI (default: `website/products.outline.yaml`)
@@ -80,10 +91,10 @@ docs-docgen-cli [build] [patterns...] [options]
 
 If no patterns appear, the default pattern is used: `**/*.[Pp]roducts.json`. If no files match this pattern, then the alternative pattern is used: `__products__/**/*.json`
 
-### Examples
+##### Examples
 
 ```bash
-docs-docgen-cli
+prodpage-cli
 ```
 
 - look for product files in current folder and matching the `**/*.[Pp]roducts.json` pattern. If no files match this pattern, look for files matching the `__products__/**/*.json` (i.e. look for all files ending with `.json` starting with the `__products__` subfolder).
@@ -103,14 +114,80 @@ sidebars:
 ```
 
 ```bash
-docs-docgen-cli myproducts.products.json -v
+prodpage-cli myproducts.products.json -v
 ```
 
 - look for `myproducts.products.json` product list file in current folder.
 - `-d` value: `website/docs`
 - `-o` value: `website/products.outline.yaml`
 
-### Product list schema
+#### `check` command
+
+Validates product list files against the product list validation schema.
+
+##### Usage
+
+```bash
+prodpage-cli check [patterns...] [options]
+```
+
+#### `init` command
+
+Creates a configuration file. It may accept a configuration filename to create, the default being the program.name and .json. Has the `--yes (-y)` to accept the default values from `./config/default.json`.
+
+##### Usage
+
+```bash
+prodpage init [filename] [options]
+```
+
+##### Arguments
+
+- `[filename]` - optional name of the configuration file (default: `prodpage.json`)
+
+##### Options
+
+- `-y, --yes` - accept default values from `./config/default.json`
+
+##### Examples
+
+```bash
+prodpage init
+# Creates prodpage.json with an empty JSON object
+```
+
+```bash
+prodpage init myconfig.json
+# Creates myconfig.json with an empty JSON object
+```
+
+```bash
+prodpage init -y
+# Creates prodpage.json with default values from config/default.json
+```
+
+```bash
+prodpage init myconfig.json -y
+# Creates myconfig.json with default values from config/default.json
+```
+
+#### `help` command
+
+Provides help text for a command.
+
+##### Usage
+
+```bash
+prodpage-cli help [command]
+```
+
+## Configuration
+
+The CLI can be configured using a JSON file. By default, the CLI looks for a file named after the program (e.g., `prodpage.json`) in the current working directory. You can specify a custom configuration file using the `-c, --config <path>` global option.
+
+To initialize a configuration file, use the `init` command. This command can create an empty configuration file or populate it with default values from `config/default.json`.
+
+## Product List Schema
 
 Product definitions appear in product list files. Product list files are `.json` file containing an array of product definition items. To ensure product list files meet design specifications, a `schema.json` file contains the validation schema.
 
@@ -180,182 +257,99 @@ The product list file schema is found in `schema.json` in the application root f
 
 1. Defines two products, "Product One" and "Product Two" using strings.
 
-   ```json
-   ["Product One", "Product Two"]
-   ```
+    ```json
+    ["Product One", "Product Two"]
+    ```
 
-   The equivalent of object definition:
+    The equivalent of object definition:
 
-   ```json
-   [
-     {
-       "label": "Product One",
-       "productId": "product-one"
-     },
-     {
-       "label": "Product Two",
-       "productId": "product-two"
-     }
-   ]
-   ```
+    ```json
+    [
+      {
+        "label": "Product One",
+        "productId": "product-one"
+      },
+      {
+        "label": "Product Two",
+        "productId": "product-two"
+      }
+    ]
+    ```
 
 2. Defines three product, two in string format and the third in object format:
 
-   ```json
-   [
-     "Product One",
-     {
-       "label": "Product Three"
-     },
-     "Product Two"
-   ]
-   ```
+    ```json
+    [
+      "Product One",
+      {
+        "label": "Product Three"
+      },
+      "Product Two"
+    ]
+    ```
 
-   The equivalent of object definition:
+    The equivalent of object definition:
 
-   ```json
-   [
-     {
-       "label": "Product One",
-       "productId": "product-one"
-     },
-     {
-       "label": "Product Three",
-       "productId": "product-three"
-     },
-     {
-       "label": "Product Two",
-       "productId": "product-two"
-     }
-   ]
-   ```
+    ```json
+    [
+      {
+        "label": "Product One",
+        "productId": "product-one"
+      },
+      {
+        "label": "Product Three",
+        "productId": "product-three"
+      },
+      {
+        "label": "Product Two",
+        "productId": "product-two"
+      }
+    ]
+    ```
 
 3. Defines four products, two in string format the third and fourth in object format. The fourth product has a specified `productId` value
 
-   ```json
-   [
-     "Product One",
-     {
-       "label": "Product Three"
-     },
-     "Product Two",
-     {
-       "label": "Product Four",
-       "productId": "pr-4"
-     }
-   ]
-   ```
+    ```json
+    [
+      "Product One",
+      {
+        "label": "Product Three"
+      },
+      "Product Two",
+      {
+        "label": "Product Four",
+        "productId": "pr-4"
+      }
+    ]
+    ```
 
-   The equivalent of object definition:
+    The equivalent of object definition:
 
-   ```json
-   [
-     {
-       "label": "Product One",
-       "productId": "product-one"
-     },
-     {
-       "label": "Product Three",
-       "productId": "product-three"
-     },
-     {
-       "label": "Product Two",
-       "productId": "product-two"
-     },
-     {
-       "label": "Product Four",
-       "productId": "pr-4"
-     }
-   ]
-   ```
+    ```json
+    [
+      {
+        "label": "Product One",
+        "productId": "product-one"
+      },
+      {
+        "label": "Product Three",
+        "productId": "product-three"
+      },
+      {
+        "label": "Product Two",
+        "productId": "product-two"
+      },
+      {
+        "label": "Product Four",
+        "productId": "pr-4"
+      }
+    ]
+    ```
 
-## `check` command
+## Contributing
 
-Validates product list files against the product list validation schema.
+Contributions are welcome! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-### Usage
+## License
 
-```bash
-docs-docgen-cli check [patterns...] [options]
-```
-
-<!-- INSERT:USAGE.md -->
-<!--- INSERT_BEGIN:USAGE.md --->
-<!-- Updated on 2024-12-09 06:49:54 for CLI: ./bin/cli.js -->
-
-```bash
-
-Usage: docs-docgen-cli [options] [command]
-
-CLI tool to generate a start-up set of files and folders for company products
-documentation hosted on a Docusaurus-powered site.
-
-Options:
-  -V, --version                    output the version number
-  -h, --help                       display help for command
-
-Commands:
-  build|b [options] [patterns...]  build documentation folders and files for
-                                   multiple company products
-  check [options] [patterns...]    check valid structure of product list files
-  help [command]                   display help for command
-```
-
-**`build` command:**
-
-```bash
-Usage: docs-docgen-cli build|b [options] [patterns...]
-
-build documentation folders and files for multiple company products
-
-Arguments:
-  patterns                  pattern for products list file
-
-Options:
-  -v, --verbose             verbose output
-  -t, --templates <path>    templates folder (default:
-                            "/home/runner/work/docgen/docgen/templates")
-  -o, --outline <filename>  outline file (default:
-                            "website/products.outline.yaml")
-  -d, --docs <path>         documentation folder (default: "website/docs")
-  --schema <filename>       schema file (default:
-                            "/home/runner/work/docgen/docgen/schema.json")
-  -h, --help                display help for command
-```
-
-**`check` command:**
-
-```bash
-Usage: docs-docgen-cli check [options] [patterns...]
-
-check valid structure of product list files
-
-Arguments:
-  patterns             pattern for products list file
-
-Options:
-  -v, --verbose        verbose output
-  --schema <filename>  schema file (default: "schema.json")
-  -h, --help           display help for command
-```
-
-**`help` command:**
-
-```bash
-Usage: docs-docgen-cli [options] [command]
-
-CLI tool to generate a start-up set of files and folders for company products
-documentation hosted on a Docusaurus-powered site.
-
-Options:
-  -V, --version                    output the version number
-  -h, --help                       display help for command
-
-Commands:
-  build|b [options] [patterns...]  build documentation folders and files for
-                                   multiple company products
-  check [options] [patterns...]    check valid structure of product list files
-  help [command]                   display help for command
-```
-
-<!--- INSERT_END:USAGE.md --->
+This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details.
