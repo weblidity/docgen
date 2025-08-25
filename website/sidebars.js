@@ -31,9 +31,9 @@
 // };
 const sidebars = {
   "docgenSidebar": [
-    "overview",
-    "getting-started",
-    "quick-demo",
+    "docgen/overview",
+    "docgen/getting-started",
+    "docgen/quick-demo",
   ]
 };
 

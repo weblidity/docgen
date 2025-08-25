@@ -8,62 +8,60 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'DocGen',
-  tagline: 'Documentation generation made easy with a good CLI',
-  favicon: 'img/favicon.ico',
+  title: "DocGen",
+  tagline: "Documentation generation made easy with a good CLI",
+  favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: 'https://weblidity.github.io',
+  url: "https://weblidity.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   // baseUrl: '/',
-  baseUrl: '/docgen/',
+  baseUrl: "/docgen/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'weblidity', // Usually your GitHub org/user name.
-  projectName: 'docgen', // Usually your repo name.
+  organizationName: "weblidity", // Usually your GitHub org/user name.
+  projectName: "docgen", // Usually your repo name.
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: './sidebars.js',
+          sidebarPath: "./my-sample-sidebars.js",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/weblidity/docgen/blob/main/website/',
+          editUrl: "https://github.com/weblidity/docgen/blob/main/website/",
         },
         blog: {
           showReadingTime: true,
           feedOptions: {
-            type: ['rss', 'atom'],
+            type: ["rss", "atom"],
             xslt: true,
           },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/weblidity/docgen/blob/main/website/',
+          editUrl: "https://github.com/weblidity/docgen/blob/main/website/",
           // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          onInlineTags: "warn",
+          onInlineAuthors: "warn",
+          onUntruncatedBlogPosts: "warn",
         },
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       }),
     ],
@@ -73,7 +71,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: "img/docusaurus-social-card.jpg",
       docs: {
         sidebar: {
           hideable: true,
@@ -82,66 +80,80 @@ const config = {
       },
       navbar: {
         // hideOnScroll: true,
-        title: 'DocGen',
+        title: "DocGen",
         logo: {
-          alt: 'DocGen logo',
-          src: 'img/logo.svg',
+          alt: "DocGen logo",
+          src: "img/logo.svg",
         },
-        
+
         items: [
+          // {
+          //   type: 'docSidebar',
+          //   sidebarId: 'docgenSidebar',
+          //   position: 'left',
+          //   label: 'Docs',
+          // },
           {
-            type: 'docSidebar',
-            sidebarId: 'docgenSidebar',
-            position: 'left',
-            label: 'Docs',
+            label: "Product Documentation",
+            position: "left",
+            items: [
+              { to: "/docs/docgen/overview", label: "DocGen" },
+              {
+                href: "/docs/product-summary",
+                label: "View all products",
+                
+              },
+              // {to: '/docs/product-name/overview', label: 'Product name'},
+            ],
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+
+          { to: "/blog", label: "Blog", position: "left" },
           {
-            href: 'https://github.com/weblidity/docgen',
-            label: 'GitHub',
-            position: 'right',
+            href: "https://github.com/weblidity/docgen",
+            label: "GitHub",
+            position: "right",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Docs",
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
+                label: "Tutorial",
+                to: "/docs/intro",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: "Stack Overflow",
+                href: "https://stackoverflow.com/questions/tagged/docusaurus",
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: "Discord",
+                href: "https://discordapp.com/invite/docusaurus",
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: "Twitter",
+                href: "https://twitter.com/docusaurus",
               },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: "Blog",
+                to: "/blog",
               },
               {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                label: "GitHub",
+                href: "https://github.com/facebook/docusaurus",
               },
             ],
           },

@@ -1,0 +1,26 @@
+sidebars:
+  - label: docgenSidebar
+    items:
+      - slug: overview
+        label: Overview
+        title: Welcome DocGen documentation
+        summary: A quick understanding of DocGen
+        headings:
+          - label: Introduction
+          - label: How to use DocGen
+          - label: What it generates
+          - label: Overall process description
+      - label: Getting started
+        title: Getting started
+        headings:
+          - label: Installation
+          - label: Usage
+          - label: Product list file
+      - label: Quick demo
+        headings:
+          - label: Step 1. Check `docgen` is available
+          - label: Step 2. Local Docusaurus project
+          - label: Step 3. Create products list files
+          - label: 'Step 4: Launch `docs-docgen-cli`'
+          - label: 'Step 5: Generate `sidebars.js` and documentation files'
+path: docgen
