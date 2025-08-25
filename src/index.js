@@ -7,7 +7,7 @@ function buildProgram() {
   program
     .name("prodpage")
     .description("A CLI tool for demonstration purposes")
-    .version(version, "-v, --version", "output the current version")
+    .version(version)
     .option("-d, --debug", "enable debug mode")
     .option("-c, --config <path>", "set config path", "./config.json");
 
