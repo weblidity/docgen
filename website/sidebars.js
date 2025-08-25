@@ -30,11 +30,11 @@
 //    */
 // };
 const sidebars = {
-  "docgenSidebar": [
+  docgenSidebar: [
     "docgen/overview",
     "docgen/getting-started",
     "docgen/quick-demo",
-  ]
+  ],
 };
 
 export default sidebars;

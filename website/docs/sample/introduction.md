@@ -4,7 +4,7 @@ DocGen is a command-line tool for generating documentation for multiple products
 
 With DocGen, you can:
 
-*   Automatically generate an index of all your products.
-*   Create individual documentation pages for each product.
-*   Define a hierarchical structure for your documentation.
-*   Customize the output using your own Handlebars templates.
+- Automatically generate an index of all your products.
+- Create individual documentation pages for each product.
+- Define a hierarchical structure for your documentation.
+- Customize the output using your own Handlebars templates.

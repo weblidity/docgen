@@ -22,7 +22,12 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "node ./bin/cli.js"
+    "start": "node ./bin/cli.js",
+    "format:js": "prettier --write \"**/*.js\"",
+    "format:json": "prettier --write \"**/*.json\"",
+    "format:md": "prettier --write \"**/*.md\"",
+    "format:yaml": "prettier --write \"**/*.yaml\"",
+    "format": "npm run format:js && npm run format:json && npm run format:md && npm run format:yaml"
   },
   "author": "",
   "license": "MIT",
@@ -32,12 +37,13 @@
     "cross-spawn": "^7.0.3",
     "file-easy": "^1.0.3",
     "glob": "^11.0.3",
-    "gray-matter": "^4.0.3",
+    "gray-matter": "^4.1.0",
     "hbsr": "^1.0.11",
     "js-yaml": "^4.1.0",
     "jsonschema": "^1.4.1"
   },
   "devDependencies": {
-    "jest": "^30.0.5"
+    "jest": "^30.0.5",
+    "prettier": "^3.6.2"
   }
 }
