@@ -28,7 +28,7 @@ jobs:
 
     # Define environment variables
     env:
-      CLI_PATH: ./bin/mock-cli.js  # Path to the CLI file
+      CLI_PATH: ./bin/cli.js  # Path to the CLI file
 
     steps:
     - name: Checkout repository
@@ -57,19 +57,30 @@ jobs:
         node generate-usage.js $CLI_PATH  # Generate the usage section using the CLI file path
 
     - name: Insert content into README
+      id: insert-content
       run: |
         CONTENT=$(cat USAGE.md)
         TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
-        CONTENT="<!-- Updated on $TIMESTAMP -->\n$CONTENT"
-        # Replace content between block tags if they exist
-        if grep -q '<!--- INSERT_BEGIN:USAGE.md --->' README.md; then
-          awk '/<!--- INSERT_BEGIN:USAGE.md --->/{print;print CONTENT;next} /<!--- INSERT_END:USAGE.md --->/{found=1} !found' CONTENT="$CONTENT" README.md > README.tmp && mv README.tmp README.md
-        else
+        CONTENT="<!-- Updated on $TIMESTAMP for CLI: $CLI_PATH -->\n$CONTENT"
+        
+        # Check for existing block tags or short tag
+        if grep -q '<!--- INSERT_BEGIN:USAGE.md --->' README.md && grep -q '<!--- INSERT_END:USAGE.md --->' README.md; then
+          # Replace content between block tags
+          awk '/<!--- INSERT_BEGIN:USAGE.md --->/{print;print CONTENT;found=1;next} /<!--- INSERT_END:USAGE.md --->/{found=0} !found' CONTENT="$CONTENT" README.md > README.tmp && mv README.tmp README.md
+          echo "::set-output name=updated::true"
+        elif grep -q '<!-- INSERT:USAGE.md -->' README.md; then
           # Replace short-format with block format and content
-          sed -i '/<!-- INSERT:USAGE.md -->/c\<!--- INSERT_BEGIN:USAGE.md --->\n'"$CONTENT"'\n<!--- INSERT_END:USAGE.md --->' README.md
+          awk '{print} /<!-- INSERT:USAGE.md -->/{print "<!--- INSERT_BEGIN:USAGE.md --->\n" CONTENT "\n<!--- INSERT_END:USAGE.md --->"}' CONTENT="$CONTENT" README.md > README.tmp && mv README.tmp README.md
+          echo "::set-output name=updated::true"
+        else
+          # No updates to README file
+          echo "No INSERT tags found in README.md. No updates made."
+          echo "::set-output name=updated::false"
         fi
+      shell: /usr/bin/bash -e {0}
 
     - name: Commit changes
+      if: steps.insert-content.outputs.updated == 'true'
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
