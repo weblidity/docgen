@@ -3,9 +3,10 @@ function buildProgram() {
   const program = new Command();
   const pkg = require("../../package.json");
   const { version } = pkg;
+  const nameWithoutCli = pkg.name.replace(/-cli$/, "");
 
   program
-    .name("prodpage")
+    .name(nameWithoutCli)
     .description("A CLI tool for demonstration purposes")
     .version(version)
     .option("-d, --debug", "enable debug mode")
