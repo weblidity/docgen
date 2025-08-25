@@ -9,7 +9,9 @@ function buildProgram() {
     .description("A CLI tool for demonstration purposes")
     .version(version)
     .option("-d, --debug", "enable debug mode")
-    .option("-c, --config <path>", "set config path", "./config.json")
+    .option("-v, --verbose", "enable verbose mode")
+    .option("--silent", "enable silent mode")
+    .option("-c, --config <path>", "set config path", `./${program.name()}.json`)
     .configureHelp({
       sortSubcommands: true,
       sortOptions: true,
