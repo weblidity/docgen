@@ -1,11 +1,7 @@
-# {{{product.label}}}
-{{#if product.description}}
+# All Products (from template)
 
-{{{product.description}}}
-{{/if}}
+Here is a list of all collected products:
 
-Product index or landing page content goes here. For now, this is just a placeholder with a recommended link to product documentation top page.
-
-## Quick links
-
-- [**{{{product.label}}} documentation**]({{{product.productId}}}/overview)
+{{#each products}}
+- [{{this.label}}](/docs/{{this.productId}})
+{{/each}}

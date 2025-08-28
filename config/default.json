@@ -21,6 +21,13 @@
       "**/tmp/**",
       "**/coverage/**",
       "**/package-lock.json"
-    ]
+    ],
+    "docs": "website/docs",
+    "sidebars": "website/sidebars.js",
+    "templates": "templates",
+    "templateFiles": {
+      "product": "product.hbs",
+      "productIndex": "product-index.hbs"
+    }
   }
 }

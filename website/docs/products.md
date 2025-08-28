@@ -1,4 +1,4 @@
-# All Products
+# All Products (from template)
 
 Here is a list of all collected products:
 
