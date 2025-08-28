@@ -1,4 +1,13 @@
 {
-  "setting1": "defaultValue1",
-  "setting2": "defaultValue2"
+  "debug": false,
+  "verbose": false,
+  "silent": false,
+  "init": {
+    "yes": false,
+    "force": false
+  },
+  "build": {
+    "output": "dist",
+    "watch": false
+  }
 }

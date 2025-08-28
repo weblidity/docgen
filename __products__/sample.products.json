@@ -1,0 +1,10 @@
+[
+  {
+    "label": "Product A",
+    "productId": "product-a"
+  },
+  {
+    "label": "Product B",
+    "productId": "product-b"
+  }
+]

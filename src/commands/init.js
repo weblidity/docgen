@@ -1,6 +1,7 @@
 // Path: src/commands/init.js
 const fs = require("fs");
 const path = require("path");
+const { mergeOptions } = require("../cli/utils"); // Import mergeOptions
 
 /**
  * Defines the 'init' command for the CLI.
@@ -16,11 +17,9 @@ module.exports = (program) => {
     .option("-y, --yes", "accept default values from ./config/default.json")
     .option("-f, --force", "overwrite existing configuration file")
     .action((filename, options) => {
-      const defaultConfigFile = `${program.name()}.json`;
-      const configFileName = filename || defaultConfigFile;
-      const configFilePath = path.resolve(process.cwd(), configFileName);
+      const mergedOptions = mergeOptions(program, 'init', options);
 
-      if (options.yes) {
+      if (mergedOptions.yes) {
         const defaultConfigPath = path.resolve(
           __dirname,
           "../../config/default.json",

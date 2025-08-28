@@ -2,6 +2,7 @@
 const { Command } = require("commander");
 const path = require("path");
 const { loadCommands } = require("./loadCommands");
+const { loadConfig } = require("./configLoader"); // Import loadConfig
 
 /**
  * Builds the Commander.js program instance for the CLI.
@@ -30,6 +31,17 @@ function buildProgram() {
       sortSubcommands: true,
       sortOptions: true,
     });
+
+  // Load configuration using preAction hook
+  program.hook('preAction', (thisCommand, actionCommand) => {
+    const configOption = thisCommand.opts().config;
+    const userConfigPath = configOption ? path.resolve(process.cwd(), configOption) : undefined;
+
+    program.config = loadConfig(
+      path.resolve(__dirname, '../../config/default.json'),
+      userConfigPath
+    );
+  });
 
   loadCommands(program, path.resolve(__dirname, "../commands"));
 

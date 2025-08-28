@@ -88,6 +88,7 @@ prodpage-cli [build] [patterns...] [options]
 - `-o, --outline <filename>` - name of the outline file intended for Skelo CLI (default: `website/products.outline.yaml`)
 - `-v, --verbose` - verbose output
 - `--schema <filename>` - name of `.json` file with product list definition schema (default: `schema.json`)
+- `-i, --ignore <patterns...>` - patterns of files to ignore when matching files to retrieve
 
 If no patterns appear, the default pattern is used: `**/*.[Pp]roducts.json`. If no files match this pattern, then the alternative pattern is used: `__products__/**/*.json`
 

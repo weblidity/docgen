@@ -1,4 +1,26 @@
 {
-  "setting1": "defaultValue1",
-  "setting2": "defaultValue2"
+  "debug": false,
+  "verbose": false,
+  "silent": false,
+  "init": {
+    "yes": false,
+    "force": false
+  },
+  "build": {
+    "output": "dist",
+    "watch": false,
+    "patterns": ["**/*.products.json", "__products__/**/*.json"],
+    "ignore": [
+      "**/node_modules/**",
+      "**/.git/**",
+      "**/build/**",
+      "**/dist/**",
+      "**/out/**",
+      "**/.vscode/**",
+      "**/temp/**",
+      "**/tmp/**",
+      "**/coverage/**",
+      "**/package-lock.json"
+    ]
+  }
 }

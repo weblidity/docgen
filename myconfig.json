@@ -1,0 +1,6 @@
+{
+  "init": {
+    "filename": "config-from-user.json",
+    "yes": false
+  }
+}
