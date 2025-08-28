@@ -17,7 +17,7 @@ module.exports = (program) => {
     .option("-y, --yes", "accept default values from ./config/default.json")
     .option("-f, --force", "overwrite existing configuration file")
     .action((filename, options) => {
-      const mergedOptions = mergeOptions(program, 'init', options);
+      const mergedOptions = mergeOptions(program, "init", options);
 
       if (mergedOptions.yes) {
         const defaultConfigPath = path.resolve(

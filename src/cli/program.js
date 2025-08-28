@@ -33,13 +33,15 @@ function buildProgram() {
     });
 
   // Load configuration using preAction hook
-  program.hook('preAction', (thisCommand, actionCommand) => {
+  program.hook("preAction", (thisCommand, actionCommand) => {
     const configOption = thisCommand.opts().config;
-    const userConfigPath = configOption ? path.resolve(process.cwd(), configOption) : undefined;
+    const userConfigPath = configOption
+      ? path.resolve(process.cwd(), configOption)
+      : undefined;
 
     program.config = loadConfig(
-      path.resolve(__dirname, '../../config/default.json'),
-      userConfigPath
+      path.resolve(__dirname, "../../config/default.json"),
+      userConfigPath,
     );
   });
 
