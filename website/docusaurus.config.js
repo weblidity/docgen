@@ -41,7 +41,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: "./my-sample-sidebars.js",
+          sidebarPath: "./sidebars.js",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: "https://github.com/weblidity/docgen/blob/main/website/",
@@ -99,7 +99,7 @@ const config = {
             items: [
               { to: "/docs/docgen/overview", label: "DocGen" },
               {
-                href: "/docs/product-summary",
+                href: "/docs",
                 label: "View all products",
               },
               // {to: '/docs/product-name/overview', label: 'Product name'},

@@ -1,10 +1,12 @@
 [
   {
     "label": "Product A",
-    "productId": "product-a"
+    "productId": "product-a",
+    "docLink": "product-a/overview"
   },
   {
     "label": "Product B",
-    "productId": "product-b"
+    "productId": "product-b",
+    "docLink": "product-b/overview"
   }
 ]

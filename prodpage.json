@@ -1,13 +1,5 @@
 {
-  "debug": false,
-  "verbose": false,
-  "silent": false,
-  "init": {
-    "yes": false,
-    "force": false
-  },
   "build": {
-    "output": "dist",
-    "watch": false
+    "productsIndex": "index.md"
   }
 }

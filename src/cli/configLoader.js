@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const logger = require("./logger");
 
 function deepMerge(target, source) {
   for (const key in source) {
@@ -28,9 +29,9 @@ function loadConfig(defaultConfigPath, userConfigPath) {
   if (fs.existsSync(defaultConfigPath)) {
     try {
       defaultConfig = JSON.parse(fs.readFileSync(defaultConfigPath, "utf8"));
-      console.log("Loaded default config:", defaultConfig);
+      logger.debug("Loaded default config:", defaultConfig);
     } catch (e) {
-      console.error(
+      logger.error(
         `Error parsing default config file ${defaultConfigPath}: ${e.message}`,
       );
     }
@@ -39,16 +40,16 @@ function loadConfig(defaultConfigPath, userConfigPath) {
   if (userConfigPath && fs.existsSync(userConfigPath)) {
     try {
       userConfig = JSON.parse(fs.readFileSync(userConfigPath, "utf8"));
-      console.log("Loaded user config:", userConfig);
+      logger.debug("Loaded user config:", userConfig);
     } catch (e) {
-      console.error(
+      logger.error(
         `Error parsing user config file ${userConfigPath}: ${e.message}`,
       );
     }
   }
 
   const merged = deepMerge(defaultConfig, userConfig);
-  console.log("Merged config:", merged);
+  logger.debug("Merged config:", merged);
   return merged;
 }
 

@@ -3,6 +3,7 @@ const { Command } = require("commander");
 const path = require("path");
 const { loadCommands } = require("./loadCommands");
 const { loadConfig } = require("./configLoader"); // Import loadConfig
+const logger = require("./logger");
 
 /**
  * Builds the Commander.js program instance for the CLI.
@@ -31,6 +32,8 @@ function buildProgram() {
       sortSubcommands: true,
       sortOptions: true,
     });
+
+  logger.setProgram(program);
 
   // Load configuration using preAction hook
   program.hook("preAction", (thisCommand, actionCommand) => {

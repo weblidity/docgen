@@ -2,6 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const { mergeOptions } = require("../cli/utils"); // Import mergeOptions
+const logger = require("../cli/logger");
 
 /**
  * Defines the 'init' command for the CLI.
@@ -18,6 +19,7 @@ module.exports = (program) => {
     .option("-f, --force", "overwrite existing configuration file")
     .action((filename, options) => {
       const mergedOptions = mergeOptions(program, "init", options);
+      const configFilePath = filename || program.opts().config;
 
       if (mergedOptions.yes) {
         const defaultConfigPath = path.resolve(
@@ -26,15 +28,15 @@ module.exports = (program) => {
         );
         fs.readFile(defaultConfigPath, "utf8", (err, data) => {
           if (err) {
-            console.error(`Error reading default config file: ${err.message}`);
+            logger.error(`Error reading default config file: ${err.message}`);
             return;
           }
           fs.writeFile(configFilePath, data, (err) => {
             if (err) {
-              console.error(`Error writing config file: ${err.message}`);
+              logger.error(`Error writing config file: ${err.message}`);
               return;
             }
-            console.log(
+            logger.success(
               `Configuration file created at: ${configFilePath} with default values.`,
             );
           });
@@ -45,10 +47,10 @@ module.exports = (program) => {
         const emptyConfig = JSON.stringify({}, null, 2);
         fs.writeFile(configFilePath, emptyConfig, (err) => {
           if (err) {
-            console.error(`Error writing config file: ${err.message}`);
+            logger.error(`Error writing config file: ${err.message}`);
             return;
           }
-          console.log(`Configuration file created at: ${configFilePath}.`);
+          logger.success(`Configuration file created at: ${configFilePath}.`);
         });
       }
     });
