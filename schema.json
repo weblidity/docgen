@@ -18,12 +18,15 @@
             "type": "string",
             "pattern": "^[a-z]+([-]?[a-z0-9]+)*$"
           },
-          "path": {
+          "docLink": {
             "type": "string",
             "pattern": "^([a-z]+([-]?[a-z0-9]+)*\\/)*[a-z]+([-]?[a-z0-9]+)*$"
           },
           "description": {
             "type": "string"
+          },
+          "featured": {
+            "type": "boolean"
           }
         },
         "required": ["label"],

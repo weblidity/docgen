@@ -1,28 +1,28 @@
-function mergeOptions(program, commandName, options) {
+const logger = require("./logger");
+
+function mergeOptions(program, commandName, options, command) {
   const commandConfig =
     program.config && program.config[commandName]
       ? program.config[commandName]
       : {};
-  const merged = { ...commandConfig }; // Start with commandConfig
 
-  for (const key in options) {
-    if (options.hasOwnProperty(key)) {
-      // If the option is an array and it's not empty, or if it's not an array,
-      // then overwrite the commandConfig value with the option value.
-      // This ensures that default empty arrays from Commander.js don't overwrite populated config arrays.
-      if (Array.isArray(options[key])) {
-        if (options[key].length > 0) {
-          // Only overwrite if the array from options is not empty
-          merged[key] = options[key];
-        }
-      } else {
-        merged[key] = options[key];
+  // Start with default options from commander
+  const merged = { ...options };
+
+  // Merge config file values
+  for (const key in commandConfig) {
+    if (commandConfig.hasOwnProperty(key)) {
+      // If the option was not provided on the command line,
+      // then the config file value takes precedence.
+      const source = command.getOptionValueSource(key);
+      if (source !== "cli") {
+        merged[key] = commandConfig[key];
       }
     }
   }
-  console.log("commandConfig:", commandConfig);
-  console.log("options (from Commander.js):", options);
-  console.log("Merged options in mergeOptions:", merged);
+  logger.debug("commandConfig:", commandConfig);
+  logger.debug("options (from Commander.js):", options);
+  logger.debug("Merged options in mergeOptions:", merged);
   return merged;
 }
 

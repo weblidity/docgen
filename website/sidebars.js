@@ -34,7 +34,23 @@ const sidebars = {
     "docgen/overview",
     "docgen/getting-started",
     "docgen/quick-demo",
-    "products", // Add this line to include products.md
+    // "products",
+  ],
+  productASidebar: [
+    "product-a/overview",
+    "product-a/installation",
+    "product-a/configuration",
+    "product-a/usage",
+    "product-a/advanced-topics",
+    "product-a/faq",
+  ],
+  productBSidebar: [
+    "product-b/overview",
+    "product-b/installation",
+    "product-b/configuration",
+    "product-b/usage",
+    "product-b/advanced-topics",
+    "product-b/faq",
   ],
 };
 
